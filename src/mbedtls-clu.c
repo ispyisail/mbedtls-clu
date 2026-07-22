@@ -36,6 +36,8 @@
     "    genpkey				Generate Private Keys\n"										\
     "    req					Generate Certificates and Certificate Signing Requests\n"		\
     "    x509					Certificate display\n"											\
+    "    enc					Encrypt a file (AES-256-GCM + PBKDF2)\n"					\
+    "    dec					Decrypt a file produced by enc\n"						\
 	"\n\n Utility options:\n"																	\
 	"    -help					See the help/usage summary for each utility\n"
 
@@ -55,6 +57,8 @@ int main(int argc, char** argv)
 	int launchRand = 0;
 	int launchReq = 0;
 	int launchX509 = 0;
+	int launchEnc = 0;
+	int launchDec = 0;
 	
 	if(argc < 2)
 	{
@@ -105,6 +109,16 @@ usage:
 			launchX509 = 1;
 			break;
 		}
+		else if(strcmp(p,"enc") == 0)
+		{
+			launchEnc = 1;
+			break;
+		}
+		else if(strcmp(p,"dec") == 0)
+		{
+			launchDec = 1;
+			break;
+		}
 		else
 		{
 			goto usage;
@@ -140,6 +154,16 @@ usage:
 	{
 		mbedtlsclu_prio_printf(MBEDTLSCLU_DEBUG,"Calling x509...\n");
 		exit_code = x509_main(argc, argv, i+1);
+	}
+	else if(launchEnc)
+	{
+		mbedtlsclu_prio_printf(MBEDTLSCLU_DEBUG,"Calling enc...\n");
+		exit_code = enc_main(argc, argv, i+1);
+	}
+	else if(launchDec)
+	{
+		mbedtlsclu_prio_printf(MBEDTLSCLU_DEBUG,"Calling dec...\n");
+		exit_code = dec_main(argc, argv, i+1);
 	}
 
     //exit_code = MBEDTLS_EXIT_SUCCESS;

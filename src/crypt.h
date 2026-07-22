@@ -1,6 +1,10 @@
-/* mbedtlsclu -	Utility lauch header file
+/* crypt -	Symmetric authenticated file encryption for mbedtls-clu
+ *				DRAFT proposed addition for the Gargoyle encrypted-backup
+ *				feature (RFC #117). Provides `mbedtls enc` / `mbedtls dec`:
+ *				AES-256-GCM with a PBKDF2-HMAC-SHA256-derived key.
  *
- * Copyright © 2024 by Michael Gray <support@lantisproject.com>
+ *			Intended for lantis1008/mbedtls-clu. Header style matches the
+ *			existing utilities in that repo.
  *
  * This file is free software: you may copy, redistribute and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -11,17 +15,9 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "mbedtlsclu_common.h"
 
-#include "ca.h"
-#include "rand.h"
-#include "req.h"
-#include "dhparam.h"
-#include "genpkey.h"
-#include "x509.h"
-#include "crypt.h"
+int enc_main(int argc, char** argv, int argi);
+int dec_main(int argc, char** argv, int argi);
