@@ -36,8 +36,8 @@
     "    genpkey				Generate Private Keys\n"										\
     "    req					Generate Certificates and Certificate Signing Requests\n"		\
     "    x509					Certificate display\n"											\
-    "    enc					Encrypt a file (AES-256-GCM + PBKDF2)\n"					\
-    "    dec					Decrypt a file produced by enc\n"						\
+    "    enc					Encrypt (or, with -d, decrypt) a file, openssl-enc compatible\n"		\
+    "    dec					Decrypt a file (alias for: enc -d)\n"						\
 	"\n\n Utility options:\n"																	\
 	"    -help					See the help/usage summary for each utility\n"
 

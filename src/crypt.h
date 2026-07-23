@@ -1,7 +1,9 @@
-/* crypt -	Symmetric authenticated file encryption for mbedtls-clu
- *				DRAFT proposed addition for the Gargoyle encrypted-backup
- *				feature (RFC #117). Provides `mbedtls enc` / `mbedtls dec`:
- *				AES-256-GCM with a PBKDF2-HMAC-SHA256-derived key.
+/* crypt -	openssl-`enc`-compatible symmetric file encryption for
+ *				mbedtls-clu (Gargoyle encrypted-backup feature, RFC #117).
+ *				Provides `mbedtls enc` (with `-d` to decrypt, mirroring
+ *				`openssl enc`): AES-256-CBC + PBKDF2 in openssl's `Salted__`
+ *				format, so files interoperate with stock `openssl enc`.
+ *				`dec` is kept as a convenience alias for `enc -d`.
  *
  *			Intended for lantis1008/mbedtls-clu. Header style matches the
  *			existing utilities in that repo.
